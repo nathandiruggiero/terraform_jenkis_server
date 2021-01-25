@@ -1,0 +1,14 @@
+---
+- name: Installation outil pour jenkis
+  hosts: inventory
+  gather_facts: yes
+  become: yes
+  roles: 
+    - docker
+  
+  tasks: 
+    - name: Récupération dépot git
+      git:
+        repo: https://github.com/j0h3/cours_ynov.git
+        dest: cours_ynov
+        clone: yes
