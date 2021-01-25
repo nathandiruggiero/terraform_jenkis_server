@@ -17,10 +17,11 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
-resource "aws_security_group" "default"{
-    vpc_id           = var.vpc_id
+resource "aws_security_group" "security_group_jenkins_DI_RUGGIERO"{
+ name = "security_group_jenkins_DI_RUGGIERO"
+ description = "security group jenkis"
+ vpc_id           = var.vpc_id
  ingress {
-     description     = "Allow ssh"
      from_port       = 22
      to_port         = 22
      protocol        = "tcp"
@@ -28,7 +29,6 @@ resource "aws_security_group" "default"{
    }
 
   ingress {
-    description = "Allow port 8080 pour jenkis"
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
@@ -36,7 +36,6 @@ resource "aws_security_group" "default"{
   }
 
   ingress {
-    description = "Allow port 80 pour les serveurs web"
     from_port       = 8080
     to_port         = 8080
     protocol        = "tcp"
@@ -49,6 +48,7 @@ resource "aws_security_group" "default"{
      protocol        = "-1"
      cidr_blocks     = ["0.0.0.0/0"]
    }
+   
 }
 
 resource "aws_instance" "web" {
