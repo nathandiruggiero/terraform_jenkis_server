@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
-resource "aws_security_group" "default"{
+resource "security_group_jenkins_Nathan" "default"{
     vpc_id           = var.vpc_id
  ingress {
      description     = "Allow ssh"
